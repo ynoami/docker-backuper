@@ -1,0 +1,12 @@
+version: '2'
+services:
+  backuper:
+    image: ynoami/backuper:latest
+    environment:
+    - SMB_USER=		# windowsサーバーへのログインユーザー
+    - SMB_PASS=			# windowsサーバーへのログインパスワード
+    - SMB_PATH=		# windowsサーバーのバックアップ先パス
+    - BKUP_PATH=/var/lib/backuper	# バックアップ元パス(volumesで指定したパス)
+    volumes:
+    - /opt/backup:/var/lib/backuper
+    privileged: true
